@@ -53,4 +53,19 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.disable_request_forgery_protection = true
+
+  #config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.163.com",
+    port: 25,
+    domain: "www.163.com",
+    authentication: :login,
+    user_name: "ltlinshi@163.com",
+    password: "password",
+    enable_starttls_auto: true
+  }
+
+
 end
