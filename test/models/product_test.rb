@@ -7,6 +7,9 @@ class ProductTest < ActiveSupport::TestCase
   #   assert true
   # end
 
+  def setup
+  end
+
   test "product attributes must not be empty" do
     product = Product.new
     assert product.invalid?
@@ -22,17 +25,17 @@ class ProductTest < ActiveSupport::TestCase
         description: "yyy",
         image_url: "zz.jpg"
       )
-      
+
       product.price = -1
       assert product.invalid?
       assert_equal ["must be greater than or equal to 0.01"],
                     product.errors[:price]
-      
+
       product.price = 0
       assert product.invalid?
       assert_equal ["must be greater than or equal to 0.01"],
                     product.errors[:price]
-      
+
       product.price = 1
       assert product.valid?
   end
